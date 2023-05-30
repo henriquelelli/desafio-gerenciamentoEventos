@@ -1,12 +1,21 @@
 <?php
 
-$servername = "localhost:8443";
-$username = "";
-$password = "";
-$dbname = "gerenciamentoEventos";
+class Database {
+    private $servername = "localhost:3306";
+    private $username = "root";
+    private $password = "";
+    private $dbname = "gerenciamentoEventos";
+    private $connection;
 
-$connection = new mysqli($servername, $user, $password, $dbname);
+    public function __construct() {
 
-if($connection->connect_error){
-    die("Erro na conexão com o bando de dados: " . $connection->connect_error);
+        $this->connection = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
+        if ($this->connection->connect_error) {
+            die("Falha na conexão com o banco de dados: " . $this->connection->connect_error);
+        }
+    }
+
+    public function getConnection() {
+        return $this->connection;
+    }
 }
