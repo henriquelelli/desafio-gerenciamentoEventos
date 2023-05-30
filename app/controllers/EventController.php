@@ -8,23 +8,38 @@ class EventController
     {
         $this->gerenciaEventos = $gerenciaEventos;
     }
+
+    private function handleLogin()
+    {
+        include_once 'app/views/login.phtml';
+        // echo "teste handleRequest";
+    }
+
     
     public function handleRequest()
     {
-        var_dump($_SERVER['REQUEST_METHOD']);
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->handleCreate();
-        } elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $this->handleCreate();
-            $this->handleRead();
-        } elseif ($_SERVER['REQUEST_METHOD'] === 'PUT') {
-            $this->handleUpdate();
-        } elseif ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
-            $this->handleDelete();
+        session_start();
+        
+        // echo "<br>";
+        // var_dump($_SESSION);
+        if (isset($_SESSION['user'])) {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $this->handleCreate();
+            } elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
+                $this->handleCreate();
+                $this->handleRead();
+            } elseif ($_SERVER['REQUEST_METHOD'] === 'PUT') {
+                $this->handleUpdate();
+            } elseif ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
+                $this->handleDelete();
+            } else {
+                $this->handleNotFound();
+            }
         } else {
-            $this->handleNotFound();
+            $this->handleLogin();
         }
     }
+
 
     private function handleCreate()
     {
@@ -47,6 +62,7 @@ class EventController
             }
         }
     }
+    
     private function handleRead()
     {
         // Lógica para ler registros do banco de dados e exibi-los

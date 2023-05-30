@@ -10,8 +10,7 @@ $connection = $database->getConnection();
 $gerenciaEventos = new GerenciaEventos($connection);
 
 $eventController = new EventController($gerenciaEventos);
-echo '<pre>';
-var_dump($eventController);
+
 $eventController->handleRequest();
 
 $connection->close();
