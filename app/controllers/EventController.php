@@ -68,7 +68,7 @@ class EventController
         // Implemente conforme necessário
     }
     
-    private function renderLogin($resultado = null)
+    public function renderLogin($resultado = null)
     {
         include_once 'app/views/login.phtml';
     }

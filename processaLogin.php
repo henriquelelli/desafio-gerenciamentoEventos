@@ -14,8 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $senha = $_POST['senha'];
     $eventController->handleLogin($usuario, $senha);
 } else {
-    header("Location: error.php");
-    exit();
+    $eventController->renderLogin();
 }
 
 $connection->close();
