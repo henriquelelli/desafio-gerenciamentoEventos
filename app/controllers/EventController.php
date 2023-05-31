@@ -18,8 +18,7 @@ class EventController
             $this->renderGerenciaEventos();
         }
         else{
-            echo "false";
-            $this->renderLogin();
+            $this->renderLogin($resultado);
         }
     }
     
@@ -69,7 +68,7 @@ class EventController
         // Implemente conforme necessário
     }
     
-    private function renderLogin()
+    private function renderLogin($resultado = null)
     {
         include_once 'app/views/login.phtml';
     }

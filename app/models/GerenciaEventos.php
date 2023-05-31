@@ -16,14 +16,19 @@ class GerenciaEventos
 
     public function verificaLogin($usuario, $senha)
     {
-        $query = "SELECT * FROM usuarios WHERE nome = '$usuario' AND senha = '$senha'";
-        $result = $this->getConnection()->query($query);
+        $query = "SELECT * FROM usuarios WHERE nome = ? AND senha = ?";
+        $sql = $this->getConnection()->prepare($query);
+        $sql->bind_param("ss", $usuario, $senha);
+        $sql->execute();
+        $result = $sql->get_result();
+        
         if ($result && $result->num_rows > 0) {
-            return true;
+            return 'true';
         } else {
-            return false;
+            return 'false';
         }
     }
+
 
     public function insert($dados)
     {
