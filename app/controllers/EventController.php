@@ -14,7 +14,6 @@ class EventController
         $resultado = $this->gerenciaEventos->verificaLogin($usuario, $senha);
         
         if ($resultado === 'true'){
-            echo "true";
             $this->renderGerenciaEventos();
         }
         else{
@@ -47,25 +46,21 @@ class EventController
     private function handleRead()
     {
         // Lógica para ler registros do banco de dados e exibi-los
-        // Implemente conforme necessário
     }
 
     private function handleUpdate()
     {
         // Lógica para atualizar registros no banco de dados
-        // Implemente conforme necessário
     }
 
     private function handleDelete()
     {
         // Lógica para excluir registros do banco de dados
-        // Implemente conforme necessário
     }
     
     private function handleNotFound()
     {
         // Lógica para lidar com rotas não encontradas
-        // Implemente conforme necessário
     }
     
     public function renderLogin($resultado = null)
@@ -80,13 +75,6 @@ class EventController
 
     public function handleRequest()
     {
-        // echo "<pre>";
-        // var_dump($_SESSION);
-        // echo "</pre>";
-        // echo "<br>";
-        // echo "<pre>";
-        // var_dump($_SERVER);
-        // echo "</pre>";
 
         session_start();
         

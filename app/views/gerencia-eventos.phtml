@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="app/views/css/style.css">
+    <link rel="fonts" href="app/views/css/fonts.css">
+    <title>Calendário de Eventos</title>
+
+    <style>
+        
+    </style>
+</head>
+<body>
+    <main>
+        <div class="center-calendar">
+            <div class="calendar">
+                <h1>Calendário de Eventos</h1>
+                <table id="calendar-table"></table>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const calendarTable = document.getElementById('calendar-table');
+
+        const currentDate = new Date();
+        const currentYear = currentDate.getFullYear();
+        const currentMonth = currentDate.getMonth();
+
+        function renderCalendar(year, month) {
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            const calendarDays = [];
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                calendarDays.push(day);
+            }
+
+            let calendarHTML = `
+                <caption>${getMonthName(month)} ${year}</caption>
+                <thead>
+                    <tr>
+                        <th>Domingo</th>
+                        <th>Segunda-feira</th>
+                        <th>Terça-feira</th>
+                        <th>Quarta-feira</th>
+                        <th>Quinta-feira</th>
+                        <th>Sexta-feira</th>
+                        <th>Sábado</th>
+                    </tr>
+                </thead>
+                <tbody>
+            `;
+
+            let dayCounter = 0;
+            let rowStarted = false;
+
+            for (let i = 0; i < calendarDays.length; i++) {
+                const day = calendarDays[i];
+
+                if (dayCounter === 0) {
+                    calendarHTML += '<tr>';
+                    rowStarted = true;
+                }
+
+                calendarHTML += `<td>${day}</td>`;
+
+                dayCounter++;
+
+                if (dayCounter === 7) {
+                    calendarHTML += '</tr>';
+                    dayCounter = 0;
+                    rowStarted = false;
+                }
+            }
+
+            if (rowStarted) {
+                calendarHTML += '</tr>';
+            }
+
+            calendarHTML += '</tbody></table>';
+
+            calendarTable.innerHTML = calendarHTML;
+        }
+
+        function getMonthName(month) {
+            const monthNames = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+            return monthNames[month];
+        }
+
+        renderCalendar(currentYear, currentMonth);
+    </script>
+</body>
+</html>

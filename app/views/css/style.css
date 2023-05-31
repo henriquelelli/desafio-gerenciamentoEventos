@@ -109,3 +109,76 @@ main {
         aspect-ratio: 1/1 block;
     }
 }
+
+body * {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+main {
+    width: 100vw;
+    height: 100vh;
+    background: #201b2c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-calendar {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calendar {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 35px;
+    background: #2f2841;
+    border-radius: 20px;
+    box-shadow: 0px 10px 40px #00000056;
+}
+
+.calendar h1 {
+    color: #77ffc0;
+    font-weight: 800;
+    margin: 0;
+    font-size: 24px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table caption {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #77ffc0;
+}
+
+table th,
+table td {
+    padding: 10px;
+    text-align: center;
+}
+
+table th {
+    color: #f0ffffde;
+    font-size: 14px;
+}
+
+table td {
+    color: #f0ffffde;
+    font-size: 16px;
+}
