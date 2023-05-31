@@ -9,13 +9,33 @@ class GerenciaEventos
         $this->connection = $connection;
     }
 
-    public function insert($data)
+    public function getConnection()
     {
-        $sql = "INSERT INTO eventos (titulo, descricao, data) VALUES ('teste', 'primeiro teste', '2023-05-01 00:00:00')";
+        return $this->connection;
+    }
+
+    public function verificaLogin($usuario, $senha)
+    {
+        $query = "SELECT * FROM usuarios WHERE nome = '$usuario' AND senha = '$senha'";
+        echo "<pre>";
+        var_dump($this);
+        $result = $this->getConnection()->query($query);
+        echo "após query";
+        if ($result && $result->num_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function insert($dados)
+    {
+        $sql = "INSERT INTO eventos (titulo, descricao, dados) 
+                VALUES ({$dados['titulo']}, {$dados['descricao']}, {$dados['data']})";
         
         $statement = $this->connection->prepare($sql);
 
-        $statement->bind_param("sss", $data['titulo'], $data['descricao'], $data['data']);
+        $statement->bind_param("sss", $dados['titulo'], $dados['descricao'], $dados['data']);
 
         if ($statement->execute())
             return true;

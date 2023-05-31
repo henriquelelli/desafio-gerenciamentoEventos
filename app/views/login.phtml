@@ -13,19 +13,18 @@
         <div class="center-login">
             <div class="card-login">
                 <h1>LOGIN</h1>
-                <div class="textfield">
-                    <label for="usuario">Usuário</label>
-                    <input type="text" name="usuario" placeholder="Usuário">
-                </div>
-                <div class="textfield">
-                    <label for="senha">Senha</label>
-                    <input type="password" name="senha" placeholder="Senha">
-                </div>
-                <a href="public/pagina-em-construcao.php">
-                    <button class="btn-login">Login</button>
-                </a>
+                <form id="login-form" action="processaLogin.php" method="POST">
+                    <div class="textfield">
+                        <label for="usuario">Usuário</label>
+                        <input type="text" name="usuario" placeholder="Usuário">
+                    </div>
+                    <div class="textfield">
+                        <label for="senha">Senha</label>
+                        <input type="password" name="senha" placeholder="Senha">
+                    </div>
+                        <button form="login-form" type="submit" class="btn-login">Login</button>
+                </form>
             </div>
-
         </div>
     </main>
 </body>
