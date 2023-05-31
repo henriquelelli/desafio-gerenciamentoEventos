@@ -12,9 +12,7 @@ $eventController = new EventController($gerenciaEventos);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $usuario = $_POST['usuario'];
     $senha = $_POST['senha'];
-    echo "teste antes do handle <br>";
     $eventController->handleLogin($usuario, $senha);
-    echo "teste depois";
 } else {
     header("Location: error.php");
     exit();

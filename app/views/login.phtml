@@ -24,6 +24,9 @@
                     </div>
                         <button form="login-form" type="submit" class="btn-login">Login</button>
                 </form>
+                <?php echo $resultado; if (isset($resultado) && ($resultado === false)): ?>
+                    <h1>Erro: Usuário ou senha incorretos.</h1>
+                <?php endif; ?>
             </div>
         </div>
     </main>

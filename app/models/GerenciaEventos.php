@@ -17,10 +17,7 @@ class GerenciaEventos
     public function verificaLogin($usuario, $senha)
     {
         $query = "SELECT * FROM usuarios WHERE nome = '$usuario' AND senha = '$senha'";
-        echo "<pre>";
-        var_dump($this);
         $result = $this->getConnection()->query($query);
-        echo "após query";
         if ($result && $result->num_rows > 0) {
             return true;
         } else {

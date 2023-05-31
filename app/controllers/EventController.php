@@ -11,10 +11,16 @@ class EventController
 
     public function handleLogin($usuario, $senha)
     {
-        echo "teste entrada login <br>";
         $resultado = $this->gerenciaEventos->verificaLogin($usuario, $senha);
-        echo "<pre>";
-        var_dump($resultado);
+        
+        if ($resultado === 'true'){
+            echo "true";
+            $this->renderGerenciaEventos();
+        }
+        else{
+            echo "false";
+            $this->renderLogin();
+        }
     }
     
     private function handleCreate()
@@ -66,6 +72,11 @@ class EventController
     private function renderLogin()
     {
         include_once 'app/views/login.phtml';
+    }
+
+    private function renderGerenciaEventos()
+    {
+        include_once 'app/views/gerencia-eventos.phtml';
     }
 
     public function handleRequest()
