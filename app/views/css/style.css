@@ -27,9 +27,6 @@ main {
     font-size: 3vw;
     color: #77ffc0;
 }
-.left-login-image {
-    width: 35vw;
-}
 .center-login {
     width: 50vw;
     height: 100vh;
@@ -63,6 +60,7 @@ main {
 }
 .textfield input {
     width: 100%;
+    max-width: 400px; /* Adicione um limite máximo de largura conforme necessário */
     border: none;
     border-radius: 10px;
     padding: 15px;
